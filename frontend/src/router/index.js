@@ -4,7 +4,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import IndexPage from '@/components/IndexPage'
-import LoginPage from '@/components/LoginPage'
+import SignUp from '@/components/login/singup'
+import SingIn from '@/components/login/singin'
 
 export default new Router({
   mode: 'history',
@@ -15,9 +16,14 @@ export default new Router({
       component: IndexPage
     },
     {
-      path: '/loginPage',
-      name: 'LoginPage',
-      component: LoginPage
+      path: '/singup',
+      name: 'SingUpPage',
+      component: SignUp
+    },
+    {
+      path: '/singin',
+      name: 'SingInPage',
+      component: SingIn
     }
   ]
 })
