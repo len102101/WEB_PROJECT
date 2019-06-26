@@ -3,27 +3,27 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import IndexPage from '@/components/IndexPage'
-import SignUp from '@/components/login/singup'
-import SingIn from '@/components/login/singin'
+import RegisterComponent from '@/components/Register'
+import LoginComponent from '@/components/Login'
 
 export default new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'IndexPage',
-      component: IndexPage
+      redirect: {
+        name: 'register'
+      }
     },
     {
-      path: '/singup',
-      name: 'SingUpPage',
-      component: SignUp
+      path: '/register',
+      name: 'register',
+      component: RegisterComponent
     },
     {
-      path: '/singin',
-      name: 'SingInPage',
-      component: SingIn
+      path: '/login',
+      name: 'login',
+      component: LoginComponent
     }
   ]
 })
