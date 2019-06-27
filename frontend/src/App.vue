@@ -4,33 +4,7 @@
   </div>
 </template>
 
-<script>
-  export default {
-    name: 'App',
-    data() {
-      return {
-        authenticated: false,
-        mockAccount: {
-          username: 'compacto',
-          password: 'compacto'
-        }
-      }
-    },
-    mounted() {
-      if (!this.authenticated) {
-        this.$router.replace({name: 'register'})
-      }
-    },
-    methods: {
-      setAuthenticated(status) {
-        this.authenticated = status;
-      },
-      logout() {
-        this.authenticated = false;
-      }
-    }
-  }
-</script>
+
 
 <style lang="scss">
   @import './assets/scss/variables.scss';

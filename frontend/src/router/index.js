@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+import IndexComponent from '@/components/IndexPage'
 import RegisterComponent from '@/components/Register'
 import LoginComponent from '@/components/Login'
 
@@ -11,9 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: {
-        name: 'register'
-      }
+        name: 'IndexComponent',
+        component: IndexComponent
     },
     {
       path: '/register',

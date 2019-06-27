@@ -1,20 +1,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-// import VueTheMask from 'vue-the-mask'
-// import VeeValidate from 'vee-validate'
-// import Meta from 'vue-meta'
 import http from 'axios'
+import FlatSurfaceShader from 'vue-flat-surface-shader'
 
-// Vue.config.productionTip = false
-// Vue.use(VueTheMask)
-// Vue.use(VeeValidate)
-// Vue.use(Meta)
-
+Vue.config.productionTip = false
 Vue.prototype.$http = http;
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+Vue.use(FlatSurfaceShader)
+
 new Vue({
   el: '#app',
   router,

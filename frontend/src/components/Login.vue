@@ -5,19 +5,27 @@
         <img class="mx-auto d-block" src="../assets/logo-new-color-site.png" alt="Compacto Records" title="Compacto Records">
         <p class="wrapper-box__title text-center">Sign in</p>
         <div>
+
+
           <form class="form form-newaccount" id="loginForm">
             <div class="form-group">
               <label for="inputUser">E-mail</label>
               <input v-model="input.username" @focus="clearError()" id="inputUser" type="text" name="username" class="form-control" placeholder="Username">
             </div>
+
+
             <div class="form-group">
               <label for="inputPassword">Password</label>
               <input v-model="input.password" @focus="clearError()" @keyup.enter="login" id="inputPassword" type="password" name="password" class="form-control" placeholder="Password">
             </div>
+
+
             <div class="custom-control custom-checkbox pull-right">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
               <label class="custom-control-label" for="customCheck1">Remember password</label>
             </div>
+
+
             <input type="button" v-on:click="login()" class="btn btn-default" id="submitLogin" value="Entrar">
             <transition name="fade">
               <span class="error-block error-message" v-show="error != null">{{ error }}</span>
@@ -25,6 +33,8 @@
              <hr>
              <router-link to="/register" class="text-link d-block text-right">No account yet?</router-link>
           </form>
+
+
         </div>
       </div>
     </div>
