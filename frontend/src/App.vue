@@ -7,6 +7,7 @@
 
 
 <style lang="scss">
+//scss import
   @import './assets/scss/variables.scss';
   @import './node_modules/bootstrap/scss/bootstrap.scss';
   @import './assets/scss/form.scss';

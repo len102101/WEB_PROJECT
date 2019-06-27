@@ -4,10 +4,8 @@ import router from './router'
 import http from 'axios'
 import FlatSurfaceShader from 'vue-flat-surface-shader'
 
-
 Vue.config.productionTip = false
 Vue.prototype.$http = http;
-Vue.config.productionTip = false
 
 Vue.use(FlatSurfaceShader)
 

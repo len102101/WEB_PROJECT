@@ -8,7 +8,7 @@
             GSM knowledge In
         </div>
         <div class="subtitle">
-            여기에 부제목을 넣고 근데 배경이 조잡해
+            배경 이미지 수정, 목록 완성시 링킹하기
         </div>
     </div>
     

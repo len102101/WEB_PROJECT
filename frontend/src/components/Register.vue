@@ -6,7 +6,6 @@
         <p class="wrapper-box__title text-center">Welcome</p>
         <div>
 
-
           <form class="form form-newaccount" id="passwordForm">
             <div class="form-group">
               <label for="">E-mail</label>
@@ -51,7 +50,6 @@
             <router-link to="/login" class="text-link d-block text-right">Already have an account?</router-link>
           </form>
 
-
         </div>
       </div>
     </div>
@@ -67,11 +65,13 @@
     },
     data() {
       return {
+        //입력값
         input: {
           username: '',
           password: '',
           match_password: '',
         },
+        //에러메세지
         error: {
           password: '',
           passwordMatch: '',
