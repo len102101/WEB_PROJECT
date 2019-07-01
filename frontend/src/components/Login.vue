@@ -20,11 +20,6 @@
             </div>
 
 
-            <div class="custom-control custom-checkbox pull-right">
-              <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">Remember password</label>
-            </div>
-
 
             <input type="button" v-on:click="login()" class="btn btn-default" id="submitLogin" value="Entrar">
             <transition name="fade">
