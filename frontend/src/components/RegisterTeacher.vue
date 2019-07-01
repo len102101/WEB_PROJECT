@@ -42,50 +42,12 @@
             </div>
 
             <div class="form-group">
-              <label for="">Student ID</label><br />
-              <select v-model="input.Grade">
-                <option disabled value="">Grade</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-              </select>
-
-              <select v-model="input.Class">
-                <option disabled value="">Class</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-              </select>
-
-              <select v-model="input.Number">
-                <option disabled value="">Number</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
-                <option>13</option>
-                <option>14</option>
-                <option>15</option>
-                <option>16</option>
-                <option>17</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-              </select>
+              <label for="">Teacher-Code</label>
+              <input type="text" v-model="input.Teacher_code" class="input-lg form-control" autocomplete="off">
             </div>
 
 
-            <input type="button" v-on:click="newUser()" class="btn btn-default" id="submit" value="Cadastrar">
+            <input type="button" v-on:click="newUser()" class="btn btn-default" id="submit" data-loading-text="Cadastrando..." value="Cadastrar">
             <transition-group name="fade" class="error-block d-block">
               <span class="error-message" :key="index + 'error'" v-for="(errorName, index) in error" v-show="errorName !== ''">{{ errorName }}</span>
             </transition-group>
@@ -113,9 +75,7 @@
           username: '',
           password: '',
           match_password: '',
-          Grade: '',
-          Class: '',
-          Number: ''
+          Teacher_Code: '',
         },
         //에러메세지
         error: {
@@ -123,7 +83,7 @@
           passwordMatch: '',
           username: '',
         },
-      };
+      }
     },
     methods: {
       // 비밀번호 두개가 일치하는지 확인
@@ -193,7 +153,7 @@
         if (this.minLength) value += 1
         return value
       },
-    } 
+    },
   }
 </script>
 

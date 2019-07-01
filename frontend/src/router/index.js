@@ -6,6 +6,8 @@ Vue.use(Router)
 import IndexComponent from '@/components/IndexPage'
 import RegisterComponent from '@/components/Register'
 import LoginComponent from '@/components/Login'
+import RegisterStudentComponent from '@/components/RegisterStudent'
+import RegisterTeacherComponent from '@/components/RegisterTeacher'
 
 export default new Router({
   mode: 'history',
@@ -19,6 +21,16 @@ export default new Router({
       path: '/register',
       name: 'register',
       component: RegisterComponent
+    },
+    {
+      path: '/register/student',
+      name: 'register-student',
+      component: RegisterStudentComponent
+    },
+    {
+      path: '/register/teacher',
+      name: 'register-teacher',
+      component: RegisterTeacherComponent
     },
     {
       path: '/login',

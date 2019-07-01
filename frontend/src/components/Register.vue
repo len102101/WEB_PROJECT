@@ -6,11 +6,11 @@
         <p class="wrapper-box__title text-center">Welcome</p>
 
         <div>
-            학생으로 가입하기
+            <router-link to="/Register/Student"><input type="button"  class="btn-register" value="학생으로 가입하기"></router-link>
         </div>
 
         <div>
-            선생님으로 가입하기
+            <router-link to="/Register/Teacher"><input type="button"  class="btn-register" value="선생님으로 가입하기"></router-link>
         </div>
         
       </div>
