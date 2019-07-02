@@ -136,9 +136,14 @@
       singup: function (event) {
         this.$http.post('/singup/student', {  
         input: this.input
-      })
-      .catch(error => {
-        alert(error)
+      }).then((response) => {
+        if (response.data.result === 0) {
+          alert('Error, please, try again')
+        }
+        if (response.data.result === 1) {
+          alert('Success')
+          this.$router.push('/login') // Login 페이지로 보내줌
+        }
       })
       },
 

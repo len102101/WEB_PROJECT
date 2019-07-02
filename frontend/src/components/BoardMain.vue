@@ -40,7 +40,7 @@ export default {
     console.log("Loading end")
     console.log(this.post)
     this.loading = false
-    }
+    },
   }
 }
 </script>

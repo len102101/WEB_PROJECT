@@ -93,11 +93,23 @@
       }
     },
     methods: {
-      singup: function(event){
+     singup: function (event) {
+       if(this.input.Teacher_code == "12345678901"){
         this.$http.post('/singup/teacher', {  
         input: this.input
+      }).then((response) => {
+        if (response.data.result === 0) {
+          alert('Error, please, try again')
+        }
+        if (response.data.result === 1) {
+          alert('Success')
+          this.$router.push('/login') // Login 페이지로 보내줌
+        }
       })
-    },
+     }else{
+       alert("인증 실패")
+     }
+      },
 
       // 비밀번호 두개가 일치하는지 확인
       match_check() {

@@ -10,9 +10,8 @@
           <form class="form form-newaccount" id="loginForm">
             <div class="form-group">
               <label for="inputUser">E-mail</label>
-              <input v-model="input.username" @focus="clearError()" id="inputUser" type="text" name="username" class="form-control" placeholder="Username">
+              <input v-model="input.mail" @focus="clearError()" id="inputUser" type="text" name="username" class="form-control" placeholder="Username">
             </div>
-
 
             <div class="form-group">
               <label for="inputPassword">Password</label>
@@ -46,7 +45,7 @@
     data() {
       return {
         input: {
-          username: '',
+          mail: '',
           password: '',
         },
         error: '',
@@ -54,18 +53,17 @@
     },
     methods: {
       login() {
-        if(this.input.username != "" && this.input.password != "") {
-          if(this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-            this.$emit("authenticated", true);
-            this.$router.push({ name: "secure" });
-          } else {
-            this.error = 'E-mail or password incorrect'
-            console.log("The username and / or password is incorrect");
-          }
-        } else {
-          this.error = 'Enter a valid e-mail and password'
-          console.log("A username and password must be present");
+        this.$http.post('/singup/checklogin', {  
+        input: this.input
+      }).then(
+        (response) => {  
+          alert('success login')
+          this.$router.push('/register')
+        },
+        (error) => { // error 를 보여줌
+          alert(error.response.data.error)
         }
+      )
       },
       clearError() {
         this.error = ''

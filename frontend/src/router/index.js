@@ -10,6 +10,7 @@ import RegisterStudentComponent from '@/components/RegisterStudent'
 import RegisterTeacherComponent from '@/components/RegisterTeacher'
 import BoardMainComponent from '@/components/BoardMain'
 import BoardWriteComponent from '@/components/BoardWrite'
+import Temp from '@/components/tempID'
 
 export default new Router({
   mode: 'history',
@@ -48,6 +49,11 @@ export default new Router({
       path: '/write',
       name: 'boardwrite',
       component: BoardWriteComponent
+    },
+    {
+      path: '/temp',
+      name: 'temp',
+      component: Temp
     }
   ]
 })
