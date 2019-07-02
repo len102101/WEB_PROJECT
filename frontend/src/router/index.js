@@ -8,6 +8,8 @@ import RegisterComponent from '@/components/Register'
 import LoginComponent from '@/components/Login'
 import RegisterStudentComponent from '@/components/RegisterStudent'
 import RegisterTeacherComponent from '@/components/RegisterTeacher'
+import BoardMainComponent from '@/components/BoardMain'
+import BoardWriteComponent from '@/components/BoardWrite'
 
 export default new Router({
   mode: 'history',
@@ -36,6 +38,16 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: LoginComponent
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: BoardMainComponent
+    },
+    {
+      path: '/write',
+      name: 'boardwrite',
+      component: BoardWriteComponent
     }
   ]
 })
