@@ -5,18 +5,19 @@
 
     <div class="mask">
         <div class="title">
-            GSM knowledge In
+            <p>GSM 지식in</p>
         </div>
         <div class="subtitle">
-            배경 이미지 수정, 목록 완성시 링킹하기
+            <router-link to="/register" class="text-link"><p>당신의 지식을 나눠주세요</p></router-link>
         </div>
     </div>
     
   </div>
 </template>
 
-
-<style>
+<style lang="scss">
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Archivo+Black&display=swap');
 
   html, body {
     margin: 0;
@@ -42,62 +43,68 @@
     color: rgba(255, 255, 255,0.9)
   }
   .title {
-    font-size: 7em;
-    font-family: Teko, sans-serif;
+    font-size: 7em;font-family: 'Open Sans', sans-serif;
     text-shadow: 4px 4px rgba(0,0,0,0.2);
-  }
-  .subtitle {
-    font-family: Avenir,Helvetica,Arial,sans-serif;
-    font-size: 1.7em;
-    margin-bottom: 30px;
+
+    p{
+    padding: 9px;
+    border: 10px solid ;
+    }
+    
   }
 
-  /* devanagari */
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Teko Regular'), local('Teko-Regular'), url(https://gstatic.loli.net/s/teko/v8/LYjNdG7kmE0gfaJ9pRtB.woff2) format('woff2');
-  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+  
+  .subtitle {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 30px;
+    color: white;
+  }
+
+  .text-link{
+    color: white;
+    text-decoration: none;
+    font-size:25px;
+	  -webkit-animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: focus-in-contract-bck 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    
 }
-/* latin-ext */
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Teko Regular'), local('Teko-Regular'), url(https://gstatic.loli.net/s/teko/v8/LYjNdG7kmE0gfa19pRtB.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+
+@-webkit-keyframes focus-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(300px);
+            transform: translateZ(300px);
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
 }
-/* latin */
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Teko Regular'), local('Teko-Regular'), url(https://gstatic.loli.net/s/teko/v8/LYjNdG7kmE0gfaN9pQ.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+@keyframes focus-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(300px);
+            transform: translateZ(300px);
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
 }
-/* devanagari */
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Teko Medium'), local('Teko-Medium'), url(https://gstatic.loli.net/s/teko/v8/LYjCdG7kmE0gdVBesCVgqGIu.woff2) format('woff2');
-  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Teko Medium'), local('Teko-Medium'), url(https://gstatic.loli.net/s/teko/v8/LYjCdG7kmE0gdVBesCpgqGIu.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Teko';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Teko Medium'), local('Teko-Medium'), url(https://gstatic.loli.net/s/teko/v8/LYjCdG7kmE0gdVBesCRgqA.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+
+a{
+  color:white;
 }
 </style>

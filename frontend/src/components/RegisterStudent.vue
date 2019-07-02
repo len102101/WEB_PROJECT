@@ -123,6 +123,7 @@
           Class: '',
           Number: ''
         },
+        
         //에러메세지
         error: {
           password: '',
@@ -152,13 +153,13 @@
       clearError(field) {
         this.error[field] = ''
       },
+
       //비밀번호 조건 3가지 검사
       password_check() {
         this.error.password = ''
         if (!this.hasNumber) this.error.password = 'Password does not contain a number'
         if (!this.hasUpperCase) this.error.password = 'Password does not contain uppercase letter'
         if (!this.minLength) this.error.password = 'Password does not contain 6 characters'
-
         return this.error.password !== ''
       },
 
@@ -181,18 +182,17 @@
       hasNumber() {
         return /\d/.test(this.input.password)
       },
-      //비밀번호 소문자 존재 여부
-      hasLowerCase() {
-        return /[a-z]/.test(this.input.password)
-      },
+      
       //비밀번호 대문자 존재 여부
       hasUpperCase() {
         return /[A-Z]/.test(this.input.password)
       },
+
       //비밀번호 촤소 길이 확인
       minLength() {
         return this.input.password.length > 5
       },
+
       // 비밀번호 유효성 검사
       passValid() {
         let value = 0
