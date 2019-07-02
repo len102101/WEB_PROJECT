@@ -8,8 +8,13 @@
 
           <form class="form form-newaccount" id="passwordForm">
             <div class="form-group">
+              <label for="">Name</label>
+              <input type="text" v-model="input.name" name="name" class="form-control" id="name">
+            </div>
+
+            <div class="form-group">
               <label for="">E-mail</label>
-              <input type="text" v-model="input.username" @focus="clearError('username')" @blur="username_check" :class="{'orange': error.username !== ''}" name="username" class="form-control" id="username">
+              <input type="text" v-model="input.mail" @focus="clearError('mail')" @blur="mail_check" :class="{'orange': error.mail !== ''}" name="mail" class="form-control" id="mail">
             </div>
 
 
@@ -85,7 +90,7 @@
             </div>
 
 
-            <input type="button" v-on:click="newUser()" class="btn btn-default" id="submit" value="Cadastrar">
+            <input type="button" v-on:click="singup" class="btn btn-default" id="submit" value="Cadastrar">
             <transition-group name="fade" class="error-block d-block">
               <span class="error-message" :key="index + 'error'" v-for="(errorName, index) in error" v-show="errorName !== ''">{{ errorName }}</span>
             </transition-group>
@@ -110,7 +115,8 @@
       return {
         //입력값
         input: {
-          username: '',
+          name: '',
+          mail: '',
           password: '',
           match_password: '',
           Grade: '',
@@ -121,11 +127,20 @@
         error: {
           password: '',
           passwordMatch: '',
-          username: '',
+          mail: '',
         },
       };
     },
     methods: {
+      singup: function (event) {
+        this.$http.post('/singup/student', {  
+        input: this.input
+      })
+      .catch(error => {
+        alert(error)
+      })
+      },
+
       // 비밀번호 두개가 일치하는지 확인
       match_check() {
         this.error.passwordMatch = ''
@@ -148,18 +163,11 @@
       },
 
       //이메일 유효성 검사
-      username_check() {
-        this.error.username = ''
-        if (!this.validEmail(this.input.username)) this.error.username = 'Enter a valid e-mail address'
-        if (this.input.username === '') this.error.username = 'Enter an e-mail'
-        return this.error.username !== ''
-      },
-      newUser() {
-        if (this.username_check()) return
-        if (this.password_check()) return
-        if (this.match_check()) return
-        this.$router.push({ name: 'login' });
-        return this.error === ''
+      mail_check() {
+        this.error.mail = ''
+        if (!this.validEmail(this.input.mail)) this.error.mail = 'Enter a valid e-mail address'
+        if (this.input.mail === '') this.error.mail = 'Enter an e-mail'
+        return this.error.mail !== ''
       },
 
       //정규표현식

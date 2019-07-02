@@ -8,6 +8,7 @@ var logger = require('morgan');
 
 // 페이지  require
 var indexRouter = require('./routes/index');
+var singup = require('./routes/singup');
 
 var app = express();
 app.use(require('connect-history-api-fallback')());
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // 페이지 라우터 설정
 app.use('/', indexRouter);
+app.use('/singup', singup);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
