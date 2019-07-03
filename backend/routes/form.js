@@ -25,7 +25,6 @@ router.get('/home', function(req, res, next) {
         if(err){
             console.log(err);
         }else{
-            console.log(board);
             res.json({data:board});
         }
         mongoose.connection.close()

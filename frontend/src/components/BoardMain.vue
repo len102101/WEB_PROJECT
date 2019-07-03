@@ -32,13 +32,10 @@ export default {
     fetchData () {
       this.$http.get('/form/home')
       .then(response => {
-      console.log(response)
-      console.log(response.data)
       this.post = response.data.data
       
     })
     console.log("Loading end")
-    console.log(this.post)
     this.loading = false
     },
   }

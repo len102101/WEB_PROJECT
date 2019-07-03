@@ -3,8 +3,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var logger = require('morgan');
-
 
 // 페이지  require
 var indexRouter = require('./routes/index');
@@ -14,6 +14,13 @@ var form = require('./routes/form');
 var app = express();
 app.use(require('connect-history-api-fallback')());
 
+app.use(cookieParser());
+app.use(session({
+  secret: '@#@$SRASDN#@REDF$#$',
+  resave: false,
+  saveUninitialized: true
+ }));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -21,7 +28,6 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // 페이지 라우터 설정

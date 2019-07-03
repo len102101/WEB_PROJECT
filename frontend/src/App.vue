@@ -4,8 +4,6 @@
   </div>
 </template>
 
-
-
 <style lang="scss">
 //scss import
   @import './assets/scss/variables.scss';
@@ -26,13 +24,3 @@
     transition: opacity 300ms;
   }
 </style>
-
-<script>
-  export default {
-    data() {
-        return {
-          authenticated: false
-          }
-        }
-      }
-</script>

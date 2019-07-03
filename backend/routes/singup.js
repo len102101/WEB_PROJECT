@@ -74,17 +74,26 @@ router.post('/teacher', function (req, res, next) {
 });
 
 router.post('/checklogin', function (req, res, next) {
+  if(req.session.name)
+  {
+    console.log("Error")
+    return res.status(205).send(" ")
+  }
   const promise = mongoose.connect(mongoDB);
   let  cipher = crypto.createCipher('aes192', 'key');
   cipher.update(req.body.input.password,'utf8', 'base64');
   let cipherPw = cipher.final('base64');
 
   User.findOne({mail: req.body.input.mail, password: cipherPw}, function(err, user){
+    mongoose.connection.close()
     // 구문 error
-    if(err) return res.status(500).json({error: err});
+    if(err) {return res.status(500).json({error: err});}
     // User가 없으면 error
-    if(!user) return res.status(404).json({error: 'user not found'});
-    res.json(user);
+    else if(!user) {return res.status(404).json({error: 'user not found'});}
+    else {
+      req.session.name = user.name;
+      res.status(200).send(req.session);
+    }
   })
 });
 

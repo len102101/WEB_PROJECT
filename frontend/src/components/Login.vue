@@ -18,8 +18,6 @@
               <input v-model="input.password" @focus="clearError()" @keyup.enter="login" id="inputPassword" type="password" name="password" class="form-control" placeholder="Password">
             </div>
 
-
-
             <input type="button" v-on:click="login()" class="btn btn-default" id="submitLogin" value="Entrar">
             <transition name="fade">
               <span class="error-block error-message" v-show="error != null">{{ error }}</span>
@@ -57,8 +55,16 @@
         input: this.input
       }).then(
         (response) => {  
-          alert('success login')
-          this.$router.push('/register')
+          console.log(response)
+          console.log(response.status)
+          if(response.status == "205"){
+            alert("이미 로그이 되어 있다고")
+            this.$router.push('/home')
+            return
+          }
+          console.log(response)
+          alert('success login: ' + response.data.name)
+          this.$router.push('/home')
         },
         (error) => { // error 를 보여줌
           alert(error.response.data.error)
