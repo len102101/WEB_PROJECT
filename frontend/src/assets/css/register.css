@@ -1,0 +1,22 @@
+.btn-tea {
+    margin-top: 5px;
+}
+/* .btn-std {
+    background-color: #7bc143;
+    border-color: #7bc143;
+    color: #FFF; }
+.btn-std:hover,
+.btn-std:focus {
+    border-color: #6fb03a;
+    background-color: #6fb03a;
+    color: #FFF; } */
+.btn-std:active,
+.btn-std:visited,
+.btn-std:active:focus,
+.btn-std:active:hover {
+    border-color: #198ce6;
+    background-color: #198ce6;
+    color: #FFF; }
+.btn{
+    text-decoration:none;
+}
