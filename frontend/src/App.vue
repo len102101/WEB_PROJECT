@@ -8,8 +8,10 @@
 //scss import
   @import './assets/scss/variables.scss';
   @import './node_modules/bootstrap/scss/bootstrap.scss';
-  @import './node_modules/bootstrap/scss/bootstrap.min.css'
+  // @import '/assets/css/bootstrap.min.css';
   @import './assets/scss/form.scss';
+  @import './assets/css/register.css';
+  @import './assets/css/sb-admin-2.min.css';
 
   html, body {
     height: 100%;
