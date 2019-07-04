@@ -10,6 +10,7 @@ var commentSchema = new Schema({
 var boardSchema = new Schema({
     title: String,
     contents: String,
+    board_adoption:{type:Boolean, default:false},
     board_date: {type: Date, default: Date.now()},
     comments: [commentSchema]
 });

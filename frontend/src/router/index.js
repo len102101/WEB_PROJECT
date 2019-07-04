@@ -10,6 +10,7 @@ import RegisterStudentComponent from '@/components/RegisterStudent'
 import RegisterTeacherComponent from '@/components/RegisterTeacher'
 import BoardMainComponent from '@/components/BoardMain'
 import BoardWriteComponent from '@/components/BoardWrite'
+import BoardPostComponent from '@/components/BoardPost'
 import Temp from '@/components/tempID'
 
 export default new Router({
@@ -49,6 +50,12 @@ export default new Router({
       path: '/write',
       name: 'boardwrite',
       component: BoardWriteComponent
+    },
+    {
+      path: '/home/post/:postId',
+      name: 'post',
+      component: BoardPostComponent,
+      props: true
     },
     {
       path: '/temp',
