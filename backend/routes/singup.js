@@ -97,6 +97,10 @@ router.post('/checklogin', function (req, res, next) {
   })
 });
 
+router.get('/logout', function(req, res, next) {
+  req.session.destroy();
+  });
+
 router.get('/List', function(req, res, next) {
   const promise = mongoose.connect(mongoDB);
     User.find({},function (err, user) {

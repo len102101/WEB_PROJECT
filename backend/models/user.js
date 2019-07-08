@@ -10,7 +10,8 @@ var userSchema = new Schema({
   grade: {type:Number, default:0},
   class: {type:Number, default:0},
   number: {type:Number, default:0},
-  create_date: { type:Date, default:Date.now }
+  board_count: {type:Number, default:0},
+  create_date: {type:Date, default:Date.now}
 });
 
 module.exports = mongoose.model('user', userSchema);

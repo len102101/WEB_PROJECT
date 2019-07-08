@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-var Board = require('../models/board');
-var Comment = require('../models/comment');
+let Board = require('../models/board');
+let Comment = require('../models/comment');
 
 //몽고 DB
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const mongoDB = 'mongodb://127.0.0.1:27017/testDB'
-let ObjectID = require('mongodb').ObjectID
  
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -26,7 +25,7 @@ router.get('/home', function(req, res, next) {
         if(err){
             console.log(err);
         }else{
-          console.log(req.session.name + " / " + board)
+          console.log(req.session.name)
             res.json({name:req.session.name, data:board});
         }
         mongoose.connection.close()
@@ -45,7 +44,7 @@ router.post('/board/write', function (req, res) {
         console.log(err);
         res.json({result: 0});
         mongoose.connection.close()
-        return; 
+        return;
       }
       mongoose.connection.close()
       res.json({result: 1});
@@ -55,13 +54,15 @@ router.post('/board/write', function (req, res) {
   /* board find by id */
 router.get('/board/load', function (req, res) {
   const promise = mongoose.connect(mongoDB);
-      Board.findOne({'_id':ObjectID(req.query.postId)}, function (err, board) {
-        console.log(req.query.postId)
-        console.log(board)
-          res.json({data:board})
-      })
+  Board.find({_id:req.query.postId},function (err, board) {
+    if(err){
+        console.log(err);
+    }else{
+        res.json({name:req.session.name, data:board});
+    }
       mongoose.connection.close()
-});
+  });
+})
    
   /* comment insert mongo*/
 router.post('/comment/write', function (req, res){
