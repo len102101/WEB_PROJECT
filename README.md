@@ -61,9 +61,9 @@ router.get('/', function (req, res, next) {
 WEB_PROJECT>cd frontend
 WEB_PROJECT\frontend>npm run build
 ```
-- frontend와 backend는 각각 Vue-cli, express-generator로 제작되었습니다.
+- frontend와 backend는 각각 Vue-cli 2.9.6, express-generator 4.16.1를 기반으로 제작되었습니다.
 - frontend의 빌드 결과물은 backend/pubilc/index/html에 자동으로 생성됩니다. 해당 파일은 별도의 편집을 하지 않는것을 권장드립니다.
-- 핵심 node_modules의 개발당시 버전은 다음과 같습니다.
+- 핵심 node_modules의 개발당시 버전은 다음과 같습니다. 그외의 모듈 버전은 package.json 파일을 참고하시기 바랍니다.
 ```
 "express-session": "^1.16.2"
 "mongoose": "^5.6.4"
