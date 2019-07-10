@@ -12,6 +12,7 @@
   @import './assets/scss/form.scss';
   @import './assets/css/register.css';
   @import './assets/css/sb-admin-2.min.css';
+  @import './assets/scss/main_post.scss';
 
   html, body {
     height: 100%;

@@ -2,7 +2,7 @@
   <section class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col wrapper-box">
-        <img class="mx-auto d-block" src="../assets/logo-new-color-site.png" alt="Compacto Records" title="Compacto Records">
+        <img class="mx-auto d-block" src="../assets/img/sky_logo.png" alt="Compacto Records" title="Compacto Records">
         <p class="wrapper-box__title text-center">Welcome</p>
         <div>
 
@@ -142,7 +142,7 @@
 
       //정규표현식
       validEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
       },
     },

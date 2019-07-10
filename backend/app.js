@@ -1,17 +1,17 @@
 //모듈 require
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const logger = require('morgan');
 
 // 페이지  require
-var indexRouter = require('./routes/index');
-var singup = require('./routes/singup');
-var form = require('./routes/form');
+const indexRouter = require('./routes/index');
+const singup = require('./routes/singup');
+const form = require('./routes/form');
 
-var app = express();
+let app = express();
 app.use(require('connect-history-api-fallback')());
 
 app.use(cookieParser());

@@ -1,24 +1,49 @@
 <template lang="html">
-  <div>
-    <div class="navbar navbar-light bg-warning">
-      <a class="navbar-brand" href="#"><b>Gsm 지식in</b></a>
-      <div class="navbar-toggler" v-if="this.user" style="display: flex">
-        <div class="navbar-toggler" v-on:click="logout()">로그아웃</div>
-        <div class="navbar-toggler">마이페이지</div>
-      </div>
-      <router-link to="/login" class="navbar-toggler" v-else>로그인</router-link>
-    </div>
+  <body>
+      <header>
+        <div id="util">
+          <div class="wrap">
+            <div class="fl">
+              <span>
+                자유롭게 소통해보아요
+              </span>
+            </div>
 
+            <div class="fr">
+              <span class="menu" v-if="this.user">
+                <router-link to="/write"><i class="fa fa-user"></i>글쓰기</router-link>
+                <i class="fa fa-sign-in"></i><span v-on:click="logout">로그아웃</span>
+              </span>
 
-     <div class="board">
-      <div class="board_contents_div">
-        <div v-for="i in post" class="post_div">
-          <router-link :to="{ name: 'post', params: {postId: i._id }}"><p class="post_title">{{i.title}}</p></router-link>
-          <p class="post_contents">{{i.contents}}</p
+              <span class="menu" v-else>
+                <router-link to="/login"><i class="fa fa-sign-in"></i>로그인</router-link>
+                <router-link to="/register"><i class="fa fa-user"></i>회원가입</router-link>
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
+
+        <nav id="nav">
+          <div class="wrap">
+            <div class="fl">
+              <router-link to="/home"><span class="logo">GSM 지식in</div>
+          </div>
+        </nav>
+      </header>
+
+      <div id="main">
+        <div class="wrap">
+          <div class="list">
+            <h3>등록된 질문</h3><hr>
+            <div class="box-wrap">
+              <div v-for="i in post" class="post_div">
+                <router-link :to="{ name: 'post', params: {postId: i._id }}"><h4 style="color:black">{{i.title}}</h4></router-link>
+                <p class="post_contents">{{i.contents}}</p><hr>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
 </template>
 
 <script>
@@ -51,18 +76,3 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  .post_div{
-    width: 50vw;
-    height: 8vh;
-    border: 3px solid;
-
-    .post_title{
-      font-size: 15px;
-    }
-
-    .post_contents{
-      font-size: 10px;
-    }
-  }
-</style>

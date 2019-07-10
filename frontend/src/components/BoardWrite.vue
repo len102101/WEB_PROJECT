@@ -1,17 +1,37 @@
 <template lang="html">
-    <form>
-        <label for="">title</label>
-        <input type="text" v-model="input.title" autocomplete="off" placehoder="제목">
+  <section class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+      <div class="col wrapper-box">
+        <img class="mx-auto d-block" src="../assets/img/sky_logo.png" alt="Compacto Records" title="Compacto Records">
+        <p class="wrapper-box__title text-center">Write</p>
+        <div>
 
-        <label for="">content</label>
-        <input type="text" v-model="input.contents" autocomplete="off" placehoder="본문">
 
-        <input type="button" v-on:click="submit" class="btn btn-default" id="submit" value="Submit">
-    </form>
-</template> 
+          <form class="form form-newaccount" id="loginForm">
+            <div class="form-group">
+              <label for="inputUser">title</label>
+              <input v-model="input.title" class="form-control" placeholder="title">
+            </div>
+
+            <div class="form-group">
+              <label for="inputPassword">content</label>
+              <textarea v-model="input.contents" class="form-control" placeholder="content"> </textarea>
+            </div>
+
+            <input type="button" v-on:click="submit" class="btn btn-default" value="Wirte!">
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
 
 <script>
 export default {
+
     data () {
     return {
       input: {
@@ -19,7 +39,7 @@ export default {
           contents: ''
         }
     }
-},
+  },
 methods: {
     submit: function(){
         this.$http.post('/form/board/write', {  
@@ -40,3 +60,7 @@ methods: {
   }
 }
 </script>
+
+<style lang="scss">
+
+</style>

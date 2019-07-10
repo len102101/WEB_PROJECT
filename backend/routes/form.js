@@ -7,7 +7,8 @@ let Comment = require('../models/comment');
 //몽고 DB
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const mongoDB = 'mongodb://127.0.0.1:27017/testDB'
+const mongoDB = 'mongodb://127.0.0.1:27017/AlltestDB'
+
  
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -34,7 +35,7 @@ router.get('/home', function(req, res, next) {
    
   /* board insert mongo */
 router.post('/board/write', function (req, res) {
-    var board = new Board();
+    let board = new Board();
     const promise = mongoose.connect(mongoDB);
     board.title = req.body.input.title;
     board.contents = req.body.input.contents;
@@ -47,9 +48,9 @@ router.post('/board/write', function (req, res) {
         return;
       }
       mongoose.connection.close()
+      })
       res.json({result: 1});
     });
-});
    
   /* board find by id */
 router.get('/board/load', function (req, res) {
@@ -58,27 +59,28 @@ router.get('/board/load', function (req, res) {
     if(err){
         console.log(err);
     }else{
-        res.json({name:req.session.name, data:board});
+        res.json({name:req.session.name, data:board, postId: req.query.postId});
     }
       mongoose.connection.close()
   });
 })
-   
+
   /* comment insert mongo*/
 router.post('/comment/write', function (req, res){
-  const promise = mongoose.connect(mongoDB);
-      var comment = new Comment();
-      comment.contents = req.body.contents;
-      comment.author = req.body.author;
+      const promise = mongoose.connect(mongoDB);
+      let comment = new Comment();
+      comment.author = req.session.name;
+      comment.contents = req.body.input.comment
+      console.log(comment)
    
-      Board.findOneAndUpdate({_id : req.body.id}, { $push: { comments : comment}}, function (err, board) {
-          if(err){
-              console.log(err);
-              res.redirect('/');
-          }
-          res.redirect('/board/'+req.body.id);
+      Board.updateOne({_id:req.body.input.postId},{'$push':{comments:{'$each':comment}}},function (err, board) {
+        if(err){
+            console.log(err);
+        }else{
+            console.log(board)
+        }
       });
       mongoose.connection.close()
 });
    
-  module.exports = router;
+module.exports = router;

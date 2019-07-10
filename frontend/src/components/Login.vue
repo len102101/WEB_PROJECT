@@ -2,7 +2,7 @@
   <section class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
       <div class="col wrapper-box">
-        <img class="mx-auto d-block" src="../assets/logo-new-color-site.png" alt="Compacto Records" title="Compacto Records">
+        <img class="mx-auto d-block" src="../assets/img/sky_logo.png" alt="Compacto Records" title="Compacto Records">
         <p class="wrapper-box__title text-center">Sign in</p>
         <div>
 
@@ -58,7 +58,7 @@
           console.log(response)
           console.log(response.status)
           if(response.status == "205"){
-            alert("이미 로그이 되어 있다고")
+            alert("이미 로그인이 되어 있습니다.")
             this.$router.push('/home')
             return
           }

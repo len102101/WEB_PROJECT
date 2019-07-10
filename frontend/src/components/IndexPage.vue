@@ -45,6 +45,9 @@
     align-items: center;
     flex-direction: column;
     color: black;
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
   }
 
   .title {

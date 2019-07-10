@@ -1,36 +1,66 @@
 <template lang="html">
-    <div class="post" >
-        <div class="navbar navbar-light bg-warning">
-            <a class="navbar-brand" href="#"><b>Gsm 지식in</b></a>
-            <div class="navbar-toggler" v-if="this.user" style="display: flex">
-                <div class="navbar-toggler" v-on:click="logout()">로그아웃</div>
-                <div class="navbar-toggler">마이페이지</div>
+    <body>
+      <header>
+        <div id="util">
+          <div class="wrap">
+            <div class="fl">
+              <span>
+                자유롭게 소통해보아요
+              </span>
             </div>
-        <router-link to="/login" class="navbar-toggler" v-else>로그인</router-link>
+
+            <div class="fr">
+              <span class="menu" v-if="this.user">
+                <router-link to="/write"><i class="fa fa-user"></i>글쓰기</router-link>
+                <i class="fa fa-sign-in"></i><span v-on:click="logout">로그아웃</span>
+              </span>
+
+              <span class="menu" v-else>
+                <router-link to="/login"><i class="fa fa-sign-in"></i>로그인</router-link>
+                <router-link to="/register"><i class="fa fa-user"></i>회원가입</router-link>
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div v-for="i in post">
-            <p class="post_title">{{i.title}}</p>
-            <p class="post_date">{{i.board_date}}</p>
-            <p class="post_contents">{{i.contents}}</p>
-            <p class="post_adoption" v-if="i.board_adoption">완료채택</p>
-            <p v-else>미채택</p>
+        <nav id="nav">
+          <div class="wrap">
+            <div class="fl">
+              <router-link to="/home"><span class="logo">GSM 지식in</div>
+          </div>
+        </nav>
+      </header>
+
+      <div id="main">
+        <div class="wrap">
+          <div class="list" v-for="i in this.post">
+            <h3>{{i.title}}</h3><hr>
+            <div class="box-wrap">
+                {{i.contents}}
+            </div>
+          </div>
+          <div class="list">
+                <h3>댓글 작성</h3>
+                <div class="box-wrap" style="height: auto">
+                <textarea v-model="input.comment" class="form-control" placeholder="comment"> </textarea>
+                <span class="commentBtn" v-on:click="commentWrite">write!</span>
+            </div>
         </div>
-    </div>
+      </div>
+  </body>
 </template>
 
 <script>
 export default {
     data() {
-        return {
-      post: [],
-      user: ''
+    return {
+        input: {
+          postId: '',
+          comment: ''
+        },
+        post: [],
+        user: ''
     }
-    },
-    computed: {
-        param: function () {
-            return this.$route.params;
-        }
     },
     created () {
         const id = this.$route.params.postId;
@@ -39,6 +69,8 @@ export default {
         }else{
             this.$http.get('/form/board/load',{params:  {postId:id}})
             .then(response => {
+                this.input.postId = response.data.postId
+                console.log(this.postId)
                 this.post  = response.data.data
                 let date = new Date(this.post[0].board_date)
                 
@@ -52,7 +84,34 @@ export default {
       this.$http.get("/singup/logout")
       alert("로그 아웃")
       this.$router.push('/')
-    }
     },
+    commentWrite(){
+        if(this.user){
+            console.log(this.input)
+            this.$http.post('/form/comment/write', {  
+                input: this.input
+            })
+        }else
+        alert("로그인이 필요합니다.")
+    }
+    }
 }
 </script>
+
+<style lang="scss">
+    .commentBtn{
+        display: block;
+	    margin: 20px auto;
+	    max-width: 100px;
+	    text-decoration: none;
+	    border-radius: 4px;
+	    padding: 20px 30px;
+        color: rgba(30, 22, 54, 0.6);
+        box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+        
+        &:hover {
+	        color: rgba(255, 255, 255, 0.85);
+	        box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+        }
+    }
+</style>
