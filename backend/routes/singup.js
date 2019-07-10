@@ -6,7 +6,7 @@ const crypto = require('crypto');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const mongoDB = 'mongodb://127.0.0.1:27017/AlltestDB'
+const mongoDB = 'mongodb://localhost/AlltestDB'
  
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

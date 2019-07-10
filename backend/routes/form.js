@@ -7,7 +7,7 @@ let Comment = require('../models/comment');
 //몽고 DB
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-const mongoDB = 'mongodb://127.0.0.1:27017/AlltestDB'
+const mongoDB = 'mongodb://localhost/AlltestDB'
 
  
 const db = mongoose.connection;
@@ -65,22 +65,24 @@ router.get('/board/load', function (req, res) {
   });
 })
 
-  /* comment insert mongo*/
-router.post('/comment/write', function (req, res){
-      const promise = mongoose.connect(mongoDB);
-      let comment = new Comment();
-      comment.author = req.session.name;
-      comment.contents = req.body.input.comment
-      console.log(comment)
-   
-      Board.updateOne({_id:req.body.input.postId},{'$push':{comments:{'$each':comment}}},function (err, board) {
-        if(err){
-            console.log(err);
-        }else{
-            console.log(board)
-        }
-      });
-      mongoose.connection.close()
-});
+router.post('/comment/write', function(req,res){
+  const pomise = mongoose.connect(mongoDB);
+  const id = req.body.input.postId;
+
+  let comment = new Comment();
+  comment.author = req.session.name;
+  comment.contents = req.body.input.comment
+
+  Board.updateOne({_id:id},{$push:{comments:comment}},function(err,board){
+    mongoose.connection.close()
+    if(err){
+      console.log("Err")
+    }
+    else{
+      console.log(board)
+      res.json({data:id})
+    }
+  })
+})
    
 module.exports = router;

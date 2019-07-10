@@ -34,16 +34,35 @@
       <div id="main">
         <div class="wrap">
           <div class="list" v-for="i in this.post">
-            <h3>{{i.title}}</h3><hr>
+            <h3>{{i.title}}</h3>
+            <span v-if="i.board_adoption">채택완료</span>
+            <span v-else>미채택</span>
+            <hr>
             <div class="box-wrap">
                 {{i.contents}}
             </div>
           </div>
+
+          <div class="list" v-if="this.post[0].comments">
+              <h3>답변들</h3>
+              <div class="box-wrap" style="height: auto" v-for="j in this.post[0].comments">
+                {{j.author}}:
+                {{j.contents}}
+              </div>
+          </div>
+          <div class="list" v-else>
+             <h3>답변들</h3>
+             <div class="box-wrap" style="height: auto">
+                아직 답변이 없습니다.
+              </div><hr>
+          </div>
+            
+
           <div class="list">
-                <h3>댓글 작성</h3>
-                <div class="box-wrap" style="height: auto">
-                <textarea v-model="input.comment" class="form-control" placeholder="comment"> </textarea>
-                <span class="commentBtn" v-on:click="commentWrite">write!</span>
+            <h3>댓글 작성</h3>
+            <div class="box-wrap" style="height: auto">
+              <textarea v-model="input.comment" class="form-control" placeholder="comment"> </textarea>
+              <span class="commentBtn" v-on:click="commentWrite">write!</span>
             </div>
         </div>
       </div>
@@ -90,6 +109,9 @@ export default {
             console.log(this.input)
             this.$http.post('/form/comment/write', {  
                 input: this.input
+            }).then(response => {
+              if(response.data.data)
+                this.$router.push('/home')
             })
         }else
         alert("로그인이 필요합니다.")
