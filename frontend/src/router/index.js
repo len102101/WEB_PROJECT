@@ -11,6 +11,7 @@ import RegisterTeacherComponent from '@/components/RegisterTeacher'
 import BoardMainComponent from '@/components/BoardMain'
 import BoardWriteComponent from '@/components/BoardWrite'
 import BoardPostComponent from '@/components/BoardPost'
+import MyPageComponent from '@/components/MyPage'
 
 export default new Router({
   mode: 'history',
@@ -55,6 +56,11 @@ export default new Router({
       name: 'post',
       component: BoardPostComponent,
       props: true
+    }, 
+    {
+      path: '/mypage',
+      name: 'mypage',
+      component: MyPageComponent
     }
   ]
 })

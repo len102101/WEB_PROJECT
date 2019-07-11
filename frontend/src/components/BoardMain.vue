@@ -11,6 +11,7 @@
 
             <div class="fr">
               <span class="menu" v-if="this.user">
+                <router-link to="/mypage"><i class="fa fa-user"></i>마이페이지</router-link>
                 <router-link to="/write"><i class="fa fa-user"></i>글쓰기</router-link>
                 <i class="fa fa-sign-in"></i><span v-on:click="logout">로그아웃</span>
               </span>
