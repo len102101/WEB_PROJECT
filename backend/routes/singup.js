@@ -25,7 +25,7 @@ router.post('/student', function (req, res, next) {
   user.name = req.body.input.name;
   user.mail = req.body.input.mail;
   user.password = req.body.input.password;
-  user.user_coed = 0;
+  user.user_code = 0;
   user.grade = req.body.input.Grade;
   user.class = req.body.input.Class;
   user.number = req.body.input.Number;
@@ -54,7 +54,7 @@ router.post('/teacher', function (req, res, next) {
   user.name = req.body.input.name;
   user.mail = req.body.input.mail;
   user.password = req.body.input.password;
-  user.user_coed = 1;
+  user.user_code = 1;
 
   let  cipher = crypto.createCipher('aes192', 'key');
   cipher.update(user.password, 'utf8', 'base64');
